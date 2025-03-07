@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://gii6v6c81vf7"]
 
 [ext_resource type="Texture2D" uid="uid://dhvgtwjnxv7e4" path="res://Sprites/8 - Orc/Idle_(64 x 32).png" id="1_6glfu"]
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_8sp4v"]
+[ext_resource type="Script" uid="uid://d0cvualloplod" path="res://Scripts/player.gd" id="1_8sp4v"]
 [ext_resource type="Texture2D" uid="uid://b610tunblyt3r" path="res://Sprites/8 - Orc/Falling_(64 x 32).png" id="3_658c3"]
 [ext_resource type="Texture2D" uid="uid://d08o4ccxuqxxr" path="res://Sprites/8 - Orc/Walking_(64 x 32).png" id="3_lxn01"]
 
@@ -125,7 +125,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(64, 50)
+position = Vector2(119, 101)
 script = ExtResource("1_8sp4v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -138,3 +138,6 @@ sprite_frames = SubResource("SpriteFrames_46o0i")
 animation = &"Jump"
 autoplay = "Idle"
 frame_progress = 0.820613
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(6, -1)
