@@ -1,0 +1,20 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://c04kmtgcl8mjy"]
+
+[ext_resource type="Texture2D" uid="uid://dsnqd81fcwrnb" path="res://Sprites/Seasonal Tilesets/4 - Winter World/Winter_entities (16 x 16).png" id="1_to808"]
+[ext_resource type="Texture2D" uid="uid://ee4rg2lr7ovg" path="res://Sprites/Seasonal Tilesets/3 - Tropics/Tropics_entities (16 x 16).png" id="2_55dd3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ppd42"]
+texture = ExtResource("1_to808")
+1:1/size_in_atlas = Vector2i(3, 3)
+1:1/0 = 0
+5:1/size_in_atlas = Vector2i(3, 3)
+5:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hnmg3"]
+texture = ExtResource("2_55dd3")
+1:1/size_in_atlas = Vector2i(3, 3)
+1:1/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_ppd42")
+sources/1 = SubResource("TileSetAtlasSource_hnmg3")

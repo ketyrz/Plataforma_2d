@@ -141,3 +141,6 @@ frame_progress = 0.820613
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(6, -1)
+limit_left = 0
+limit_top = 0
+limit_bottom = 0
