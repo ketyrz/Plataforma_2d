@@ -5,19 +5,27 @@ extends CharacterBody2D
 const SPEED = 65.0
 const JUMP_VELOCITY = -300.0
 
+@onready var anim: AnimatedSprite2D = $Anime
+@export var max_jump_count = 2
+
+var jump_count = 0
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	elif velocity.x != 0:
-		anime.play("Walk")
 	else:
-		anime.play("Idle")
+		jump_count = 0
+		if velocity.x != 0:
+			anime.play("Walk")
+		else:
+			anime.play("Idle")
+			
 
 	# Handle jump.
-	if Input.is_action_just_pressed("Up") and is_on_floor():
+	if Input.is_action_just_pressed("Up") and jump_count < max_jump_count: 
 		velocity.y = JUMP_VELOCITY
+		jump_count += 1
 		anime.play("Jump")
 
 	# Get the input direction and handle the movement/deceleration.
@@ -33,6 +41,12 @@ func _physics_process(delta: float) -> void:
 	elif velocity.x < 0:
 		anime.flip_h = false
 		
-
 		
 	move_and_slide()
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("DeathZone"):
+		get_tree().reload_current_scene()
+	elif area.is_in_group("LevelEnd"):
+		get_tree().change_scene_to_file("res://Scene/Forest.tscn")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://4igjlmxx65ws"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnxqw"]
+size = Vector2(1533, 20)
+
+[node name="DeathZone" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(723.5, 194)
+shape = SubResource("RectangleShape2D_cnxqw")
+debug_color = Color(0.990533, 0, 0.277149, 0.42)

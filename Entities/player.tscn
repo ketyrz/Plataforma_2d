@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://gii6v6c81vf7"]
+[gd_scene load_steps=22 format=3 uid="uid://gii6v6c81vf7"]
 
 [ext_resource type="Texture2D" uid="uid://dhvgtwjnxv7e4" path="res://Sprites/8 - Orc/Idle_(64 x 32).png" id="1_6glfu"]
 [ext_resource type="Script" uid="uid://d0cvualloplod" path="res://Scripts/player.gd" id="1_8sp4v"]
@@ -124,8 +124,10 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
-position = Vector2(119, 101)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_taegk"]
+size = Vector2(20, 28)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_8sp4v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -133,14 +135,18 @@ position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_c55h5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 position = Vector2(9.53674e-07, -1)
 sprite_frames = SubResource("SpriteFrames_46o0i")
 animation = &"Jump"
 autoplay = "Idle"
 frame_progress = 0.820613
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(6, -1)
-limit_left = 0
-limit_top = 0
-limit_bottom = 0
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_taegk")
+debug_color = Color(0.994374, 0, 0.223101, 0.42)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,18 +1,19 @@
-[gd_scene load_steps=9 format=4 uid="uid://ervmyhjsqa32"]
+[gd_scene load_steps=11 format=4 uid="uid://ervmyhjsqa32"]
 
-[ext_resource type="PackedScene" uid="uid://gii6v6c81vf7" path="res://Entities/player.tscn" id="1_mqd0l"]
 [ext_resource type="TileSet" uid="uid://evnkkebje843" path="res://Tiles/Terreno.tres" id="2_e63rd"]
 [ext_resource type="Texture2D" uid="uid://mfva2xy7qefm" path="res://Sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/6 - Distant_trees.png" id="3_wh0rk"]
 [ext_resource type="Texture2D" uid="uid://cyg0875lt7kuw" path="res://Sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/5 - Tree_row_BG_2.png" id="4_l8r6r"]
 [ext_resource type="Texture2D" uid="uid://0so38fhj5jsi" path="res://Sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/4 - Tree_row_BG_1.png" id="5_2oe6p"]
 [ext_resource type="Texture2D" uid="uid://b7g7dpo53phgv" path="res://Sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/3 - Bottom_leaf_piles.png" id="6_6m7qb"]
 [ext_resource type="Texture2D" uid="uid://b3dou1otf7tf5" path="res://Sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/2 - Trees.png" id="7_f4647"]
+[ext_resource type="PackedScene" uid="uid://gii6v6c81vf7" path="res://Entities/player.tscn" id="8_2oe6p"]
 [ext_resource type="Texture2D" uid="uid://didox0om6xnw0" path="res://Sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/1 - Leaf_top.png" id="8_268hh"]
+[ext_resource type="PackedScene" uid="uid://b75u8p0dlrh5w" path="res://Entities/camera.tscn" id="9_6m7qb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2oe6p"]
+size = Vector2(20, 300)
 
 [node name="Forest" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource("1_mqd0l")]
-position = Vector2(129, 108)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD+/wwAAQAJAAMAAAD//wwAAQAMAAMAAAAAAAwAAQAMAAMAAAABAAwAAQAMAAMAAAACAAwAAQAMAAMAAAADAAwAAQAMAAMAAAAEAAwAAQAMAAMAAAAFAAwAAQAMAAMAAAAGAAwAAQAMAAMAAAAHAAwAAQAMAAMAAAAIAAwAAQAMAAMAAAAJAAwAAQAMAAMAAAAKAAwAAQAMAAMAAAALAAwAAQAMAAMAAAAMAAwAAQAMAAMAAAANAAwAAQAMAAMAAAAOAAwAAQAMAAMAAAAPAAwAAQAMAAMAAAAQAAwAAQAMAAMAAAARAAwAAQAMAAMAAAASAAwAAQAMAAMAAAATAAwAAQAMAAMAAAAUAAwAAQAMAAMAAAAVAAwAAQAMAAMAAAAWAAwAAQAMAAMAAAAXAAwAAQAMAAMAAAAYAAwAAQAMAAMAAAAZAAwAAQAMAAMAAAAaAAwAAQAMAAMAAAAbAAwAAQAMAAMAAAAcAAwAAQAMAAMAAAAdAAwAAQAMAAMAAAAeAAwAAQAMAAMAAAAfAAwAAQAMAAMAAAAgAAwAAQAMAAMAAAAhAAwAAQANAAMAAAA=")
@@ -74,4 +75,23 @@ position = Vector2(114.5, 100)
 scale = Vector2(1.00347, 0.961538)
 texture = ExtResource("8_268hh")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 71)
+shape = SubResource("RectangleShape2D_2oe6p")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(536, 77)
+shape = SubResource("RectangleShape2D_2oe6p")
+
+[node name="Player" parent="." instance=ExtResource("8_2oe6p")]
+position = Vector2(31, 170)
+
+[node name="Camera2D" parent="." instance=ExtResource("9_6m7qb")]
+limit_left = 0
+limit_top = 0
+limit_right = 536
+limit_bottom = 208
