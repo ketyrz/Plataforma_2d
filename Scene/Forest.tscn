@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://ervmyhjsqa32"]
+[gd_scene load_steps=12 format=4 uid="uid://ervmyhjsqa32"]
 
 [ext_resource type="TileSet" uid="uid://evnkkebje843" path="res://Tiles/Terreno.tres" id="2_e63rd"]
 [ext_resource type="Texture2D" uid="uid://mfva2xy7qefm" path="res://Sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/6 - Distant_trees.png" id="3_wh0rk"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b7g7dpo53phgv" path="res://Sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/3 - Bottom_leaf_piles.png" id="6_6m7qb"]
 [ext_resource type="Texture2D" uid="uid://b3dou1otf7tf5" path="res://Sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/2 - Trees.png" id="7_f4647"]
 [ext_resource type="PackedScene" uid="uid://gii6v6c81vf7" path="res://Entities/player.tscn" id="8_2oe6p"]
+[ext_resource type="PackedScene" uid="uid://b6ktt7ucvbiis" path="res://Entities/level_end.tscn" id="8_6m7qb"]
 [ext_resource type="Texture2D" uid="uid://didox0om6xnw0" path="res://Sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/1 - Leaf_top.png" id="8_268hh"]
 [ext_resource type="PackedScene" uid="uid://b75u8p0dlrh5w" path="res://Entities/camera.tscn" id="9_6m7qb"]
 
@@ -16,7 +17,7 @@ size = Vector2(20, 300)
 [node name="Forest" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD+/wwAAQAJAAMAAAD//wwAAQAMAAMAAAAAAAwAAQAMAAMAAAABAAwAAQAMAAMAAAACAAwAAQAMAAMAAAADAAwAAQAMAAMAAAAEAAwAAQAMAAMAAAAFAAwAAQAMAAMAAAAGAAwAAQAMAAMAAAAHAAwAAQAMAAMAAAAIAAwAAQAMAAMAAAAJAAwAAQAMAAMAAAAKAAwAAQAMAAMAAAALAAwAAQAMAAMAAAAMAAwAAQAMAAMAAAANAAwAAQAMAAMAAAAOAAwAAQAMAAMAAAAPAAwAAQAMAAMAAAAQAAwAAQAMAAMAAAARAAwAAQAMAAMAAAASAAwAAQAMAAMAAAATAAwAAQAMAAMAAAAUAAwAAQAMAAMAAAAVAAwAAQAMAAMAAAAWAAwAAQAMAAMAAAAXAAwAAQAMAAMAAAAYAAwAAQAMAAMAAAAZAAwAAQAMAAMAAAAaAAwAAQAMAAMAAAAbAAwAAQAMAAMAAAAcAAwAAQAMAAMAAAAdAAwAAQAMAAMAAAAeAAwAAQAMAAMAAAAfAAwAAQAMAAMAAAAgAAwAAQAMAAMAAAAhAAwAAQANAAMAAAA=")
+tile_map_data = PackedByteArray("AAD+/wwAAQAJAAMAAAD//wwAAQAMAAMAAAAAAAwAAQAMAAMAAAABAAwAAQAMAAMAAAACAAwAAQAMAAMAAAADAAwAAQAMAAMAAAAEAAwAAQAMAAMAAAAFAAwAAQAMAAMAAAAGAAwAAQAMAAMAAAAHAAwAAQAMAAMAAAAIAAwAAQAMAAMAAAAJAAwAAQAMAAMAAAAKAAwAAQAMAAMAAAALAAwAAQAMAAMAAAAMAAwAAQAMAAMAAAANAAwAAQAMAAMAAAAOAAwAAQAMAAMAAAAPAAwAAQAMAAMAAAAQAAwAAQAMAAMAAAARAAwAAQAMAAMAAAASAAwAAQAMAAMAAAATAAwAAQAMAAMAAAAUAAwAAQAMAAMAAAAVAAwAAQAMAAMAAAAWAAwAAQAMAAMAAAAXAAwAAQAMAAMAAAAYAAwAAQAMAAMAAAAZAAwAAQAMAAMAAAAaAAwAAQAMAAMAAAAbAAwAAQAMAAMAAAAcAAwAAQAMAAMAAAAdAAwAAQAMAAMAAAAeAAwAAQAMAAMAAAAfAAwAAQAMAAMAAAAgAAwAAQAMAAMAAAAhAAwAAQANAAMAAAAGAAoAAwABAAEAAAAYAAoAAwABAAEAAAAZAAsAAwABAAUAAAAXAAsAAwADAAUAAAAMAAsAAwADAAUAAAARAAsAAwADAAUAAAAeAAsAAwADAAUAAAAGAAsAAwADAAUAAAACAAsAAwADAAUAAAAOAAsAAwAJAAEAAAAcAAsAAwAJAAEAAAAJAAoAAQAJAAMAAAAKAAoAAQAKAAMAAAALAAoAAQAKAAMAAAAMAAoAAQANAAMAAAAOAAgAAQAPAAMAAAAQAAYAAQAPAAMAAAASAAUAAQAJAAMAAAATAAUAAQAKAAMAAAAUAAUAAQAKAAMAAAAVAAUAAQAKAAMAAAAWAAUAAQAKAAMAAAAXAAUAAQAKAAMAAAAYAAUAAQAKAAMAAAAZAAUAAQAKAAMAAAAaAAUAAQANAAMAAAAZAAMAAwAFAAEAAAA=")
 tile_set = ExtResource("2_e63rd")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -78,7 +79,7 @@ texture = ExtResource("8_268hh")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 71)
+position = Vector2(-1, 71)
 shape = SubResource("RectangleShape2D_2oe6p")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
@@ -95,3 +96,7 @@ limit_left = 0
 limit_top = 0
 limit_right = 536
 limit_bottom = 208
+
+[node name="LevelEnd" parent="." instance=ExtResource("8_6m7qb")]
+position = Vector2(408, 54)
+next_level = "Goodbye"

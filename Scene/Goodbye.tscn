@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bal7rqdapg5o8"]
+
+[node name="Goodbye" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 249.0
+offset_bottom = 201.0
+color = Color(0, 0.509804, 0.141176, 1)
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 0, 1)
+offset_left = 34.0
+offset_top = 92.0
+offset_right = 215.0
+offset_bottom = 115.0
+text = "Por hoje é tudo pessoal"

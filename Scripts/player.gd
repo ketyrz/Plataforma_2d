@@ -47,6 +47,16 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("DeathZone"):
-		get_tree().reload_current_scene()
+		call_deferred("ReloadScene")
 	elif area.is_in_group("LevelEnd"):
-		get_tree().change_scene_to_file("res://Scene/Forest.tscn")
+		var next_level = area.next_level
+		if next_level:
+			call_deferred("LoadScene", next_level)
+		else:
+			push_error("Próxima fase não definida em end level")
+		
+func ReloadScene():
+	get_tree().reload_current_scene()
+	
+func LoadScene(SceneName: String):
+	get_tree().change_scene_to_file("res://Scene/" + SceneName + ".tscn")

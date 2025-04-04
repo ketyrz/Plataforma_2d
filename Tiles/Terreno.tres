@@ -1,8 +1,9 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://evnkkebje843"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://evnkkebje843"]
 
 [ext_resource type="Texture2D" uid="uid://1751wyf2in5e" path="res://Sprites/Seasonal Tilesets/2 - Autumn Forest/Terrain (16 x 16).png" id="1_rgr17"]
 [ext_resource type="Texture2D" uid="uid://be3jtcsbu6xd8" path="res://Sprites/Seasonal Tilesets/4 - Winter World/Terrain (16 x 16).png" id="2_cna6i"]
 [ext_resource type="Texture2D" uid="uid://cucrsd1vmhjru" path="res://Sprites/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="3_kp1h8"]
+[ext_resource type="Texture2D" uid="uid://mfwyloo5llgg" path="res://Sprites/Seasonal Tilesets/2 - Autumn Forest/Autumn_entities (16 x 16).png" id="4_cna6i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ou18a"]
 resource_name = "Fall"
@@ -231,8 +232,29 @@ texture = ExtResource("3_kp1h8")
 15:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -0.359716, -8, -0.539576)
 15:3/0/physics_layer_0/polygon_0/one_way = true
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kp1h8"]
+texture = ExtResource("4_cna6i")
+5:1/size_in_atlas = Vector2i(3, 3)
+5:1/0 = 0
+9:1/size_in_atlas = Vector2i(3, 1)
+9:1/0 = 0
+15:1/0 = 0
+16:1/0 = 0
+17:1/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+14:3/size_in_atlas = Vector2i(5, 2)
+14:3/0 = 0
+1:5/0 = 0
+3:5/0 = 0
+1:1/size_in_atlas = Vector2i(3, 3)
+1:1/0 = 0
+
 [resource]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ou18a")
 sources/1 = SubResource("TileSetAtlasSource_ivtx6")
 sources/2 = SubResource("TileSetAtlasSource_ba1b3")
+sources/3 = SubResource("TileSetAtlasSource_kp1h8")

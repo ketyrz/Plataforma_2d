@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://fhr2dip7row"]
+
+[ext_resource type="Script" uid="uid://c6ogfwq05nma1" path="res://title.gd" id="1_r8pmb"]
+
+[node name="Title" type="Node2D"]
+script = ExtResource("1_r8pmb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 253.0
+offset_bottom = 202.0
+color = Color(0, 0.510362, 0.142985, 1)
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 0, 1)
+offset_left = 84.0
+offset_top = 57.0
+offset_right = 167.0
+offset_bottom = 80.0
+text = "Jureg"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 2.0
+offset_top = 85.0
+offset_right = 244.0
+offset_bottom = 108.0
+text = "Desenvolvido por Ketlyn Rayzel"
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 0, 1)
+offset_left = 92.0
+offset_top = 128.0
+offset_right = 159.0
+offset_bottom = 159.0
+text = "INICIAR"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

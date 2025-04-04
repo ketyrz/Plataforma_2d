@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://5du8bs03ich"]
+[gd_scene load_steps=21 format=4 uid="uid://5du8bs03ich"]
 
 [ext_resource type="PackedScene" uid="uid://gii6v6c81vf7" path="res://Entities/player.tscn" id="1_qm6hl"]
 [ext_resource type="TileSet" uid="uid://evnkkebje843" path="res://Tiles/Terreno.tres" id="2_cnxqw"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cgj5dk6kjgb1p" path="res://Sprites/Seasonal Tilesets/5 - Misc. universal tiles/House (112 x 96).png" id="11_ym3fb"]
 [ext_resource type="PackedScene" uid="uid://b75u8p0dlrh5w" path="res://Entities/camera.tscn" id="12_cnxqw"]
 [ext_resource type="PackedScene" uid="uid://4igjlmxx65ws" path="res://Entities/death_zone.tscn" id="13_gfalv"]
+[ext_resource type="PackedScene" uid="uid://b6ktt7ucvbiis" path="res://Entities/level_end.tscn" id="14_cupb7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1puje"]
 animations = [{
@@ -47,6 +48,7 @@ tile_size = Vector2i(16, 12)
 sources/0 = SubResource("TileSetAtlasSource_wxco1")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cupb7"]
+size = Vector2(15, 28)
 
 [node name="Tropic" type="Node2D"]
 
@@ -122,11 +124,14 @@ position = Vector2(69, 101)
 limit_left = 0
 limit_bottom = 208
 
-[node name="DeathZone" parent="." groups=["LevelEnd"] instance=ExtResource("13_gfalv")]
+[node name="DeathZone" parent="." groups=["DeathZone"] instance=ExtResource("13_gfalv")]
 
-[node name="LevelEnd" type="Area2D" parent="." groups=["LevelEnd"]]
-position = Vector2(111, 136)
+[node name="LevelEnd" parent="." instance=ExtResource("14_cupb7")]
+position = Vector2(579, 98)
+next_level = "Forest"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd"]
+[node name="CollisionShape2D" parent="LevelEnd" index="0"]
+position = Vector2(-2.5, 0)
 shape = SubResource("RectangleShape2D_cupb7")
-debug_color = Color(0, 0.648432, 0.180981, 0.42)
+
+[editable path="LevelEnd"]
