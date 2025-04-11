@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var anime: AnimatedSprite2D = $AnimatedSprite2D
 
-const SPEED = 65.0
+const SPEED = 150.0
 const JUMP_VELOCITY = -300.0
 
 @onready var anim: AnimatedSprite2D = $Anime
@@ -23,10 +23,8 @@ func _physics_process(delta: float) -> void:
 			
 
 	# Handle jump.
-	if Input.is_action_just_pressed("Up") and jump_count < max_jump_count: 
-		velocity.y = JUMP_VELOCITY
-		jump_count += 1
-		anime.play("Jump")
+	if Input.is_action_just_pressed("Up") and jump_count < max_jump_count:
+		jump()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -41,9 +39,12 @@ func _physics_process(delta: float) -> void:
 	elif velocity.x < 0:
 		anime.flip_h = false
 		
-		
 	move_and_slide()
 
+func jump():
+	velocity.y = JUMP_VELOCITY
+	jump_count += 1
+	anime.play("Jump")
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("DeathZone"):
@@ -54,6 +55,12 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			call_deferred("LoadScene", next_level)
 		else:
 			push_error("Próxima fase não definida em end level")
+	elif area.is_in_group("Enemy"):
+		if velocity.y > 0: # O player matou o inimigo
+			area.take_damage() # Deleta o inimigo
+			jump()
+		else:
+			ReloadScene()
 		
 func ReloadScene():
 	get_tree().reload_current_scene()

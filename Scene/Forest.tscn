@@ -77,12 +77,14 @@ scale = Vector2(1.00347, 0.961538)
 texture = ExtResource("8_268hh")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-1, 71)
 shape = SubResource("RectangleShape2D_2oe6p")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(536, 77)

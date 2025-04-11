@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://5du8bs03ich"]
+[gd_scene load_steps=22 format=4 uid="uid://5du8bs03ich"]
 
 [ext_resource type="PackedScene" uid="uid://gii6v6c81vf7" path="res://Entities/player.tscn" id="1_qm6hl"]
 [ext_resource type="TileSet" uid="uid://evnkkebje843" path="res://Tiles/Terreno.tres" id="2_cnxqw"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b75u8p0dlrh5w" path="res://Entities/camera.tscn" id="12_cnxqw"]
 [ext_resource type="PackedScene" uid="uid://4igjlmxx65ws" path="res://Entities/death_zone.tscn" id="13_gfalv"]
 [ext_resource type="PackedScene" uid="uid://b6ktt7ucvbiis" path="res://Entities/level_end.tscn" id="14_cupb7"]
+[ext_resource type="PackedScene" uid="uid://b8plvlwkdb062" path="res://Entities/enemy.tscn" id="15_4m5fg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1puje"]
 animations = [{
@@ -133,5 +134,8 @@ next_level = "Forest"
 [node name="CollisionShape2D" parent="LevelEnd" index="0"]
 position = Vector2(-2.5, 0)
 shape = SubResource("RectangleShape2D_cupb7")
+
+[node name="Enemy" parent="." instance=ExtResource("15_4m5fg")]
+position = Vector2(245, 148)
 
 [editable path="LevelEnd"]
