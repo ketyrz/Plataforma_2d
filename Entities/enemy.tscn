@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b8plvlwkdb062"]
+[gd_scene load_steps=28 format=3 uid="uid://b8plvlwkdb062"]
 
 [ext_resource type="Script" uid="uid://dajpcehy6upak" path="res://Scripts/enemy.gd" id="1_5bdg5"]
 [ext_resource type="Texture2D" uid="uid://ldkosrtgswra" path="res://Sprites/3 - Skeleton/Limping_Movement (32 x 32).png" id="1_7qchm"]
@@ -101,7 +101,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_yih3f")
 }],
 "loop": false,
-"name": &"atack",
+"name": &"attack",
 "speed": 5.0
 }, {
 "frames": [{
@@ -150,12 +150,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_adlvn")
 }],
 "loop": true,
-"name": &"default",
+"name": &"walk",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5bdg5"]
 size = Vector2(13, 13)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b15b6"]
+radius = 7.0
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
@@ -167,8 +170,8 @@ shape = SubResource("CapsuleShape2D_5bdg5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -3)
 sprite_frames = SubResource("SpriteFrames_uwg5a")
-animation = &"atack"
-autoplay = "default"
+animation = &"walk"
+autoplay = "walk"
 
 [node name="HitBox" type="Area2D" parent="." groups=["Enemy"]]
 script = ExtResource("3_0ifcb")
@@ -176,8 +179,22 @@ script = ExtResource("3_0ifcb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-1, -7)
 shape = SubResource("RectangleShape2D_5bdg5")
-debug_color = Color(0.948704, 3.85046e-06, 0.577036, 0.42)
+debug_color = Color(0.666563, 0.51118, 0, 0.42)
 
 [node name="fall_detect" type="RayCast2D" parent="."]
 position = Vector2(10, -1)
 target_position = Vector2(0, 20)
+
+[node name="player_detect" type="RayCast2D" parent="."]
+target_position = Vector2(15, 0)
+collision_mask = 2
+
+[node name="AttackArea" type="Area2D" parent="." groups=["DeathZone"]]
+process_mode = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(8, -1)
+shape = SubResource("CapsuleShape2D_b15b6")
+debug_color = Color(0.983593, 0, 0.351586, 0.42)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
