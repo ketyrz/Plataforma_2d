@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 enum EnemyState {
-	andando,
-	atacando,
-	morto
+	walk,
+	attack,
+	dead
 }
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
@@ -15,32 +15,31 @@ enum EnemyState {
 const SPEED = 10.0
 
 var direction = 1
-
 var status: EnemyState
 
 func _ready() -> void:
-	ir_para_andando()
+	go_to_walk()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	
+		
 	match status:
-		EnemyState.andando:
-			andando()
-		EnemyState.atacando:
-			atacando()
-		EnemyState.morto:
-			morto()
-	
+		EnemyState.walk:
+			walk()
+		EnemyState.attack:
+			attack()
+		EnemyState.dead:
+			dead()
+		
 	move_and_slide()
 
-func ir_para_andando():
-	status = EnemyState.andando
+func go_to_walk():
+	status = EnemyState.walk
 	anim.play("walk")
 
-func andando():
+func walk():
 	if !fall_detect.is_colliding():
 		direction *= -1
 		scale.x *= -1
@@ -48,31 +47,31 @@ func andando():
 	velocity.x = SPEED * direction
 	
 	if player_detect.is_colliding():
-		ir_para_atacando()
+		go_to_attack()
 
-func ir_para_atacando():
-	status = EnemyState.atacando
+func go_to_attack():
+	status = EnemyState.attack
 	anim.play("attack")
 	velocity.x = 0
 
-func atacando():
+func attack():
 	if anim.frame == 2:
 		attack_area.process_mode = Node.PROCESS_MODE_INHERIT
 	else:
 		attack_area.process_mode = Node.PROCESS_MODE_DISABLED
 
-func ir_para_morto():
-	status = EnemyState.morto
+func go_to_dead():
+	status = EnemyState.dead
 	velocity.x = 0
 	anim.play("death")
 	hit_box.queue_free()
 
-func morto():
+func dead():
 	pass
 
 func take_damage():
-	ir_para_morto()
+	go_to_dead()
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "attack":
-		ir_para_andando()
+		go_to_walk()
